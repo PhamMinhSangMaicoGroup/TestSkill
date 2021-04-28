@@ -6,8 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code", "Code", "{732B0F5F-DE10-4602-BD43-7A06B588584E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repost", "Repost", "{D1A3315D-C2AB-456F-BAFC-B5FDF25C5989}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Documents\github_testskill_Repost\OOP\SOLID.docx = ..\..\Documents\github_testskill_Repost\OOP\SOLID.docx
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceStore", "DeviceStore\DeviceStore.csproj", "{4D0417D3-99C5-4351-A434-BDD5AF24B2E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeviceStore", "DeviceStore\DeviceStore.csproj", "{4D0417D3-99C5-4351-A434-BDD5AF24B2E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

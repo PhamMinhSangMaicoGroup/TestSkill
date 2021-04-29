@@ -174,19 +174,30 @@ namespace CSA_MineSweeper
             int x, y;
             MakeMove(out x, out y);
             CreateMap(x, y);
-
+            PrintMap();
+            
             while (!Win() && !gameOver)
             {
-
-                do
+                int select = SelectNext();
+                if (select == 1)
                 {
-                    PrintMap();
-                    MakeMove(out x, out y);
-
-                } while (isChecked[x, y]);
-
-                OpenRoad(x, y);
-
+                    do
+                    {
+                        PrintMap();
+                        MakeMove(out x, out y);
+                    } while (isChecked[x, y]);
+                    OpenRoad(x, y);
+                }
+                if (select == 2)
+                {
+                        PrintMap();
+                        MarkMine(out x, out y);
+                }
+                if (select == 3)
+                {
+                    DeleteMark(out x, out y);
+                }
+            PrintMap();
             }
 
             if (gameOver)
@@ -207,14 +218,15 @@ namespace CSA_MineSweeper
         // in map lên console
         private void PrintMap()
         {
-            Console.WriteLine("  0 1 2 3 4 5 6 7 8");
+            Console.WriteLine("     0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8");
             for (int i = 0; i < 9; i++)
             {
-                Console.Write("{0} ", i);
+                Console.WriteLine("----------------------------------------");
+                Console.Write(" {0} |", i);
                 for (int j = 0; j < 9; j++)
                 {
 
-                    Console.Write("{0} ", mapDisplay[i, j]);
+                    Console.Write(" {0} |", mapDisplay[i, j]);
                 }
                 Console.WriteLine();
             }
@@ -223,26 +235,72 @@ namespace CSA_MineSweeper
         private void PrintFinal()
         {
             Console.WriteLine();
-            Console.WriteLine("  0 1 2 3 4 5 6 7 8");
+            Console.WriteLine("     0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8");
             for (int i = 0; i < 9; i++)
             {
-                Console.Write("{0} ", i);
+                Console.WriteLine("----------------------------------------");
+                Console.Write(" {0} |", i);
                 for (int j = 0; j < 9; j++)
                 {
-                    if (map[i, j] == -1) Console.Write("X ");
-                    else Console.Write("{0} ", 48 + map[i, j] - '0');
+                    if (map[i, j] == -1) Console.Write(" X |");
+                    else Console.Write(" {0} |", 48 + map[i, j] - '0');
                 }
                 Console.WriteLine();
             }
         }
+        private int SelectNext()
+        {
+            int selectNum = -1;
+            do
+            {
+                Console.WriteLine("[1] Move");
+                Console.WriteLine("[2] Mark space suspect mine");
+                Console.WriteLine("[3] Delete mark");
+                Console.Write("\t =>");
+                try
+                {
+                    selectNum = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception exc2)
+                {
+                    selectNum = -1;
+                }
+            } while (selectNum<1 || selectNum >3);
+            return selectNum;
+        }
+        private void MarkMine(out int x, out int y)
+        {         
+            MakeMove(out x,out y);
+            if (isChecked[x, y])
+            {
+                Console.WriteLine("Vi tri ma duoc mo");
+            }
+            else
+            {
+                mapDisplay[x, y] = 'o';
+                isChecked[x, y] = true;
+            }
 
+        }
+        private void DeleteMark(out int x, out int y)
+        {
+            MakeMove(out x, out y);
+            if (mapDisplay[x, y] == 'o')
+            {
+                mapDisplay[x, y] = '#';
+                isChecked[x, y] = false;
+            }
+            else
+            {
+                Console.WriteLine("Vi tri khong duoc mark");
+            }
+        }
         private void MakeMove(out int x, out int y)
         {
             do
-            {
-                
+            { 
                 int inputX=-1,inputY=-1;
-                Console.Write("\nNhap  x (cot doc): ");
+                Console.Write("\nNhap  x (cot ngang): ");
                 try
                 {
                     inputX = Convert.ToInt32(Console.ReadLine());
@@ -253,7 +311,7 @@ namespace CSA_MineSweeper
                 }
                 
                 x = inputX;
-                Console.Write("\nNhap  y(cot ngang): ");
+                Console.Write("\nNhap  y(cot doc): ");
                 try
                 {
                     inputY = Convert.ToInt32(Console.ReadLine());

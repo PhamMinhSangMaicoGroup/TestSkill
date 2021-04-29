@@ -6,29 +6,18 @@ namespace CSA_Fibonancci
 {
     class Way3
     {
-        public List<int> CreateListFibonacci()
+        public void PrintFibonancci(int num1, int num2)
         {
-            List<int> listFibo = new List<int>();
+            Console.Write("[" + num1 + "]  ");
+            Console.Write("[" + num2 + "]  ");
 
-            int num1 = 0, num2 = 1, numf = 0;
-            // Khởi taọ trước 2 số đầu tiền trong dãy fibonacci
-            listFibo.Add(0);
-            listFibo.Add(1);
-
+            
             for (int i = 0; i < 13; i++)
             {
-                numf = num1 + num2;
-                listFibo.Add(numf);
+                int numf = num1 + num2;
+                Console.Write("[" + numf + "]  ");
                 num1 = num2;
                 num2 = numf;
-            }
-            return listFibo;
-        }
-        public void PrintFibonancciWithList(List<int> listFibo)
-        {
-            foreach (int index in listFibo)
-            {
-                Console.Write("[" + index + "]  ");
             }
         }
     }

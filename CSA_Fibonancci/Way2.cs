@@ -6,30 +6,28 @@ namespace CSA_Fibonancci
 {
     class Way2
     {
-        public int CreateNumFibonancci(int index)
+        public int CreateNumFibonancci(int index,int[] arr)
         {
-            if (index == -1)
-            {
-                return -1;
-            }
-            else
-            {
-                if (index == 0 || index == 1)
+                if (index == 0  )
                 {
-                    return index;
+                    return arr[0];
+                }else if (index == 1)
+                {
+                    return arr[1];
                 }
                 else
                 {
-                    return CreateNumFibonancci(index - 1) + CreateNumFibonancci(index - 2);
+                    return CreateNumFibonancci(index - 1,arr) + CreateNumFibonancci(index - 2,arr);
                 }
-            }
         }
-        public int[] CreateArrayFibonancci()
+        public int[] CreateArrayFibonancci(int num1,int num2)
         {
             int[] arrFibonancci = new int[15];
-            for (int i = 0; i < 15; i++)
+            arrFibonancci[0] =num1;
+            arrFibonancci[1] =num2;
+            for (int i = 2; i < 15; i++)
             {
-                arrFibonancci[i] = CreateNumFibonancci(i);
+                arrFibonancci[i] = CreateNumFibonancci(i,arrFibonancci);
             }
             return arrFibonancci;
         }

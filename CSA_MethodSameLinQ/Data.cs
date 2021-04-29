@@ -15,18 +15,6 @@ namespace CSA_MethodSameLinQ
         {
             Id = id; Name = name; Age = age;
         }
-        public static List<Data> ListData()
-        {
-            List<Data> list = new List<Data>
-            {
-                new Data("1","Pham Minh Sang",21),
-                new Data("2","Minh Pham Sang",22),
-                new Data("3","Sang Minh Pham",23),
-                new Data("4","Pham Sang Minh",23)
-            };
-            return list;
-        }
 
-        
     }
 }

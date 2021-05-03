@@ -20,12 +20,12 @@ namespace CSA_Fibonancci
                     return CreateNumFibonancci(index - 1,arr) + CreateNumFibonancci(index - 2,arr);
                 }
         }
-        public int[] CreateArrayFibonancci(int num1,int num2)
+        public int[] CreateArrayFibonancci(int num1,int num2,int length)
         {
-            int[] arrFibonancci = new int[15];
+            int[] arrFibonancci = new int[length];
             arrFibonancci[0] =num1;
             arrFibonancci[1] =num2;
-            for (int i = 2; i < 15; i++)
+            for (int i = 2; i < length; i++)
             {
                 arrFibonancci[i] = CreateNumFibonancci(i,arrFibonancci);
             }
@@ -37,6 +37,11 @@ namespace CSA_Fibonancci
             {
                 Console.Write("[" + arr[i] + "]  ");
             }
+        }
+        public void TakeValueOfFibonacciAtLocal(int[] arr, int local)
+        {
+            Console.WriteLine("\nValue at Local: [" + local + "] = " + arr[local]);
+            Console.WriteLine();
         }
     }
 }

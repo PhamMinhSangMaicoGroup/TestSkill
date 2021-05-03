@@ -6,13 +6,13 @@ namespace CSA_Fibonancci
 {
     class Way1
     {
-        public int[] CreateArrayFibonancci(int num1, int num2) //num1,2 là 2 số đầu của chuỗi
+        public int[] CreateArrayFibonancci(int num1, int num2,int length) //num1,2 là 2 số đầu của chuỗi
         {
-            int[] arrFibonancci = new int[15];
+            int[] arrFibonancci = new int[length];
             // set 2 số đầu vào array
             arrFibonancci[0] = num1;
             arrFibonancci[1] = num2;
-            for (int i = 2; i < 15; i++)
+            for (int i = 2; i < length; i++)
             {
                 arrFibonancci[i] = arrFibonancci[i - 1] + arrFibonancci[i - 2];
             }
@@ -24,6 +24,11 @@ namespace CSA_Fibonancci
             {
                 Console.Write("[" + arr[i] + "]  ");
             }
+        }
+        public void TakeValueOfFibonacciAtLocal(int[] arr, int local)
+        {
+            Console.WriteLine("\nValue at Local: [" + local + "] = " + arr[local]);
+            Console.WriteLine();
         }
     }
 }

@@ -39,7 +39,7 @@ namespace DeviceStore
         {
             int index = 0;
             listBills[index].Output();
-            Console.WriteLine("\n\n bam a de sang trai, b de sang phai., q de thoat ");
+            Console.WriteLine("\n\n bam a de sang trai, d de sang phai., q de thoat ");
             string click;
             do
             {
@@ -86,7 +86,7 @@ namespace DeviceStore
                 else
                 {
                     listBills[index].Output();
-                    Console.WriteLine("\n\n bam a de sang trai, b de sang phai., q de thoat ");
+                    Console.WriteLine("\n\n bam a de sang trai, d de sang phai., q de thoat ");
                 }
 
             } while (click != "q");

@@ -8,9 +8,9 @@ namespace DeviceStore
     {
         static void Main(string[] args)
         {
-            Bill b = new Bill();
-            b.Input();
-            b.Output();
+            ListBill listBill = new ListBill();
+            listBill.Input();
+            listBill.Output();
             Console.ReadKey();
         }
     }

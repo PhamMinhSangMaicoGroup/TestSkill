@@ -1,0 +1,56 @@
+﻿@using Data
+@using Microsoft.EntityFrameworkCore
+
+@inherits ListTodoModel
+
+
+<ol class="list-group">
+    @foreach (var i in _context.TodoItem)
+    {
+        if (isDone == i.Done)
+        {
+            <li>
+                <div class="input-group mb-3 ">
+                    @if (!i.Done)
+                    {
+                        total++;
+                        <input type="text" @bind="i.Title" class="form-control" placeholder="Todo" @onkeyup="(KeyboardEventArgs e) =>EnterCase(i, e)" />
+                        <div class="input-group-append">
+                            <input value="Xong" class="btn btn-outline-danger" type="button" @onclick="() => Done(i.Id)">
+                        </div>
+                    }
+                    else
+                    {
+                        total++;
+                        <input disabled type="text" @bind="i.Title" class="form-control" placeholder="Todo" />
+                        <div class="input-group-append">
+                            <input value="X" class="btn btn-danger btn-outline-primary text-white" type="button" @onclick="() => Remove(i.Id)">
+                        </div>
+                    }
+
+                </div>
+            </li>
+        }
+
+    }
+    @if (total == 0)
+    {
+        <p class="text-center text-secondary" width="100%">trống</p>
+    }
+    else
+    {
+        if (isDone)
+        {
+            <h4>Có @total đã hoàn thành </h4>
+        }
+        else
+        {
+            <h4>Còn @total chưa hoàn thành </h4>
+        }
+
+    }
+
+</ol>
+@code {
+    
+}

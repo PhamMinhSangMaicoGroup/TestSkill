@@ -1,0 +1,18 @@
+﻿@page "/"
+@page "/Todo"
+
+@using TodoList_sqlserver.Data
+@using TodoList_sqlserver.Components
+
+@inherits IndexFunc
+
+<h2>Tạo việc cần làm mới</h2>
+<div class="input-group mb-3">
+
+    <input @bind="item.Title" type="text" class="form-control" placeholder="Todo" @onkeyup="enterCreate" />
+    <div class="input-group-append">
+        <button @onclick="AddTodoItem" class="btn btn-outline-success" type="button">Add</button>
+    </div>
+</div>
+<h5 class="text-warning">Việc cần làm</h5>
+<ListTodo _context="@(_context)" isDone="false"></ListTodo>

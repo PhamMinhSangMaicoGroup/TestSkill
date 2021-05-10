@@ -1,0 +1,12 @@
+﻿@page "/todo/done"
+
+@inherits TodoDoneModel
+
+@using TodoList_sqlserver.Components
+
+<h2>Đã hoàn thành</h2>
+<ListTodo _context="@_context" isDone="true"></ListTodo>
+
+@code {
+
+}

@@ -1,0 +1,33 @@
+﻿@using Data
+
+<ol class="list-group">
+    @foreach (var i in listData)
+    {
+        if (isDone == i.Done)
+        {
+            <li>
+                <div class="input-group mb-3 @(i.Done ? "border border-success" : "")">
+                    <input type="text" @bind="i.Title" class="form-control" placeholder="Todo" />
+                    <input type="text" @bind="i.Note" class="form-control" placeholder="Note" />
+                    <input type="date" @bind="i.Date" class="form-control" placeholder="Note" />
+                    <input type="time" @bind="i.Time" class="form-control" placeholder="Note" />
+                    @if (!i.Done)
+                    {
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-danger" type="button" @onclick="@(e=>i.Done=true)">Done</button>
+                        </div>
+                    }
+
+                </div>
+            </li>
+        }
+
+    }
+</ol>
+@code {
+    [Parameter]
+    public List<TodoModel> listData { set; get; }
+    [Parameter]
+    public bool isDone { set; get; }
+
+}

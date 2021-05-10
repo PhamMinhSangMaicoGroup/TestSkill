@@ -1,2 +1,20 @@
 ﻿@page "/"
+@page "/Todo"
 
+@using TodoList.Components
+
+@inherits IndexFunc
+
+<h2>Tạo việc cần làm mới</h2>
+<div class="input-group mb-3">
+
+    <input @bind="item.Title" type="text" class="form-control" placeholder="Todo" @onkeyup="enterCreate" />
+    <input @bind="item.Note" type="text" class="form-control" placeholder="Note" @onkeyup="enterCreate" />
+    <input @bind="item.Date" type="date" class="form-control" min="@DateTime.Now.ToString("MM-dd-yyyy")"@onkeyup="enterCreate" />
+    <input @bind="item.Time" type="time" class="form-control" min="@DateTime.Now.TimeOfDay" @onkeyup="enterCreate" />
+    <div class="input-group-append">
+        <button @onclick="AddTodoItem" class="btn btn-outline-success" type="button">Add</button>
+    </div>
+</div>
+<ListTodo listData="@data" isDone="false" ></ListTodo>
+<button @onclick="Save" class="btn btn-outline-primary">Save</button>

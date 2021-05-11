@@ -30,19 +30,21 @@ namespace TodoList_sqlserver.Components
         public void Remove(int id)
         {
             TodoItem todo = _context.TodoItem.Find(id);
-            _context.Remove(todo);
-            _context.SaveChanges();
+            if (todo != null)
+            {
+                _context.Remove(todo);
+                _context.SaveChanges();
+            }
+
         }
         public void EnterCase(TodoItem todo, KeyboardEventArgs eventArgs)
-        {        
-                
+        {          
             if (eventArgs.Key == "Enter")
             {
                 _context.TodoItem.Find(todo.Id).Title = todo.Title;
                 _context.SaveChanges();
 
             }
-            
         }
         
     }

@@ -25,5 +25,14 @@ namespace TodoList_sqlserver.Pages
         }
 
         //method
+        public void RemoveAll()
+        {
+            var list =_context.TodoItem.Where(n=>n.Done == true);
+            foreach (var i in list)
+            {
+                _context.TodoItem.Remove(i);
+            }
+            _context.SaveChanges();
+        }
     }
 }

@@ -15,14 +15,16 @@ namespace TodoList_sqlserver.Components
         [Parameter]
         public bool isDone { set; get; }
 
-        protected int total = 0;
-
+        public int total ;
+        //
+        protected override void OnInitialized()
+        {
+        }
         //method
         public void Done(int id)
         {
             _context.TodoItem.Find(id).Done = true;
             _context.SaveChanges();
-            total=0;
         }
 
         public void Remove(int id)
@@ -30,7 +32,6 @@ namespace TodoList_sqlserver.Components
             TodoItem todo = _context.TodoItem.Find(id);
             _context.Remove(todo);
             _context.SaveChanges();
-            total=0;
         }
         public void EnterCase(TodoItem todo, KeyboardEventArgs eventArgs)
         {        
@@ -43,5 +44,6 @@ namespace TodoList_sqlserver.Components
             }
             
         }
+        
     }
 }
